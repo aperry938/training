@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Protocol">
+<meta name="robots" content="noindex, nofollow">
+<title>Training Protocol · Đà Lạt</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B0B0C'/%3E%3Cpath d='M30 55 L45 40 L45 65 L70 40' stroke='%23B4E85C' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0B0B0C;
+    --surface: #141416;
+    --surface-2: #1D1D20;
+    --surface-3: #252529;
+    --border: #26262A;
+    --text: #F5F5F3;
+    --text-dim: #8A8A90;
+    --text-dimmer: #5A5A60;
+    --accent: #B4E85C;
+    --accent-dim: rgba(180, 232, 92, 0.12);
+    --warn: #E8A85C;
+    --push: #E85C8A;
+    --pull: #5CB4E8;
+    --lower: #B45CE8;
+    --skill: #B4E85C;
+    --run: #E8D55C;
+    --rest: #8A8A90;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
+    max-width: 760px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 11, 12, 0.82);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    backdrop-filter: saturate(160%) blur(18px);
+    padding: calc(env(safe-area-inset-top) + 14px) 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .brand h1 { font-size: 20px; letter-spacing: -0.02em; font-weight: 700; }
+  .brand .sub { font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  nav.tabs {
+    display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; margin: 0 -4px;
+  }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0; padding: 10px 12px;
+    background: none; border: none;
+    color: var(--text-dim); font-size: 13px; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+    margin-bottom: -1px;
+  }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+  main { padding: 18px; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade .2s ease-out; }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section { margin-bottom: 22px; }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 10px; gap: 8px;
+  }
+  .section-head h2 {
+    font-size: 17px; letter-spacing: -0.01em; font-weight: 700;
+  }
+  .badge {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-dim);
+    padding: 4px 9px; border-radius: 999px;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .badge.push { color: var(--push); background: rgba(232, 92, 138, 0.12); }
+  .badge.pull { color: var(--pull); background: rgba(92, 180, 232, 0.12); }
+  .badge.lower { color: var(--lower); background: rgba(180, 92, 232, 0.12); }
+  .badge.run { color: var(--run); background: rgba(232, 213, 92, 0.12); }
+  .badge.rest { color: var(--rest); background: rgba(138, 138, 144, 0.12); }
+  .meta { font-size: 13px; color: var(--text-dim); margin-bottom: 10px; line-height: 1.45; }
+  .list {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+  }
+  .row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; cursor: pointer; user-select: none; -webkit-user-select: none;
+    transition: background .1s;
+  }
+  .row + .row { border-top: 1px solid var(--border); }
+  .row:active { background: var(--surface-2); }
+  .check {
+    width: 20px; height: 20px; border-radius: 6px;
+    border: 1.5px solid #3A3A40; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .row.done .check { background: var(--accent); border-color: var(--accent); }
+  .row.done .check::after {
+    content: ""; width: 10px; height: 6px;
+    border: solid var(--bg); border-width: 0 0 2px 2px;
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  .row.done .label {
+    color: var(--text-dimmer); text-decoration: line-through;
+    text-decoration-color: var(--text-dimmer);
+  }
+  .row .label { flex: 1; min-width: 0; }
+  .row .name { font-size: 14px; line-height: 1.35; }
+  .row .prescr { font-size: 12px; color: var(--text-dim); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .row.done .prescr { color: var(--text-dimmer); }
+  .session-card {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px; margin-bottom: 14px;
+  }
+  .session-card .s-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 6px; gap: 10px;
+  }
+  .session-card .s-head h3 { font-size: 15px; font-weight: 700; }
+  .session-card .s-meta { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
+  .week-grid {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .week-row {
+    display: grid; grid-template-columns: 46px 1fr 1fr;
+    gap: 8px; align-items: stretch;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 12px;
+  }
+  .week-row.today { border-color: var(--accent); background: var(--accent-dim); }
+  .week-row .day {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-dim);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .week-row.today .day { color: var(--accent); }
+  .week-row .slot { font-size: 12px; line-height: 1.35; }
+  .week-row .slot-label {
+    font-size: 10px; color: var(--text-dimmer);
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .cat-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; margin-bottom: 6px;
+  }
+  .cat-head:active { background: var(--surface-2); }
+  .cat-head h3 { font-size: 14px; font-weight: 700; }
+  .cat-head .count {
+    font-size: 12px; color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .cat-head .caret {
+    display: inline-block; margin-left: 8px;
+    transition: transform .2s; color: var(--text-dim);
+  }
+  .cat.open .cat-head .caret { transform: rotate(90deg); }
+  .cat-body {
+    display: none; padding: 4px 0 14px 4px;
+  }
+  .cat.open .cat-body { display: block; }
+  .cat-item {
+    font-size: 13px; padding: 6px 12px; color: var(--text);
+    line-height: 1.4;
+  }
+  .cat-item .p { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .totals {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px; margin-bottom: 14px;
+  }
+  .totals h3 {
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-dim); font-weight: 700; margin-bottom: 10px;
+  }
+  .totals .big {
+    font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .totals .big .u {
+    font-size: 15px; font-weight: 600; color: var(--text-dim);
+    margin-left: 4px; letter-spacing: -0.01em;
+  }
+  .totals .range {
+    font-size: 12px; color: var(--text-dim); margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .macros-big {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-top: 16px;
+  }
+  .macro-big {
+    background: var(--bg); padding: 12px 10px;
+    border-radius: 10px; text-align: center;
+  }
+  .macro-big .tag {
+    display: block; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 4px; font-weight: 700;
+  }
+  .macro-big .val {
+    font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums;
+  }
+  .macro-big .ratio {
+    font-size: 10px; color: var(--accent); margin-top: 2px;
+    font-variant-numeric: tabular-nums; font-weight: 600;
+  }
+  .meal-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; margin-bottom: 10px;
+  }
+  .meal-card .m-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px; gap: 10px;
+  }
+  .meal-card .m-head h3 { font-size: 14px; font-weight: 700; }
+  .meal-card .m-head .kcals {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .meal-card .m-body { color: var(--text-dim); font-size: 13px; line-height: 1.45; }
+  .restaurant-row {
+    display: flex; justify-content: space-between; gap: 10px;
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .restaurant-row:last-child { border-bottom: none; }
+  .restaurant-row .name { font-weight: 600; }
+  .restaurant-row .freq {
+    color: var(--accent); font-weight: 700; font-size: 11px;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .restaurant-row .note { font-size: 12px; color: var(--text-dim); }
+  .note {
+    font-size: 13px; color: var(--text);
+    padding: 12px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin-top: 10px; line-height: 1.5;
+  }
+  .note strong { color: var(--accent); font-weight: 700; }
+  .note + .note { margin-top: 6px; }
+  .progression {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; margin-bottom: 10px;
+  }
+  .progression h4 {
+    font-size: 13px; font-weight: 700; margin-bottom: 4px;
+  }
+  .progression .level {
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 6px;
+  }
+  .progression .cri {
+    font-size: 12px; color: var(--text-dim); line-height: 1.4;
+  }
+  .pill-row {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;
+  }
+  .pill {
+    padding: 6px 12px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+  }
+  .pill .freq {
+    color: var(--accent); font-variant-numeric: tabular-nums; margin-left: 4px;
+  }
+  .reset {
+    display: block; width: 100%; margin-top: 22px; padding: 12px;
+    background: none; border: 1px solid var(--border); border-radius: 10px;
+    color: var(--text-dim); font-family: inherit; font-size: 13px;
+    font-weight: 600; cursor: pointer;
+  }
+  .reset:active { background: var(--surface); }
+  .week-phases {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 6px; margin-top: 8px;
+  }
+  .phase-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 8px; text-align: center;
+    font-size: 11px;
+  }
+  .phase-card .p-wk {
+    font-size: 10px; color: var(--accent); font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .phase-card .p-focus { font-weight: 600; margin-bottom: 4px; font-size: 12px; }
+  .phase-card .p-detail { color: var(--text-dim); font-size: 10px; line-height: 1.3; }
+  footer {
+    padding: 24px 18px calc(env(safe-area-inset-bottom) + 20px);
+    text-align: center; color: var(--text-dimmer); font-size: 11px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>Training Protocol</h1>
+    <span class="sub" id="today-label"></span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-panel="today">Today</button>
+    <button class="tab" data-panel="week">Week</button>
+    <button class="tab" data-panel="library">Library</button>
+    <button class="tab" data-panel="fuel">Fuel</button>
+    <button class="tab" data-panel="skills">Skills</button>
+    <button class="tab" data-panel="run">Run</button>
+    <button class="tab" data-panel="recovery">Recovery</button>
+  </nav>
+</header>
+
+<main>
+
+<section class="panel active" id="today"></section>
+
+<section class="panel" id="week">
+  <div class="section">
+    <div class="section-head"><h2>Weekly Rhythm</h2><span class="badge">2-a-days</span></div>
+    <div class="meta">AM = heavier compounds (45–60 min). PM = skill, conditioning, or mobility (30–45 min), ideally 6–8 hours later.</div>
+    <div class="week-grid" id="week-grid"></div>
+  </div>
+</section>
+
+<section class="panel" id="library">
+  <div class="section">
+    <div class="section-head"><h2>Exercise Library</h2><span class="badge" id="lib-count"></span></div>
+    <div class="meta">Every movement from your notes, consolidated. Tap a category to expand.</div>
+    <div id="library-list"></div>
+  </div>
+</section>
+
+<section class="panel" id="fuel">
+  <div class="totals">
+    <h3>Daily Target</h3>
+    <div class="big">3,400–3,700<span class="u">kcal</span></div>
+    <div class="range">maintenance → slight surplus · dial to 3,200 lean</div>
+    <div class="macros-big">
+      <div class="macro-big"><span class="tag">Carbs</span><div class="val">500–560g</div><div class="ratio">~7 g/kg</div></div>
+      <div class="macro-big"><span class="tag">Protein</span><div class="val">145–155g</div><div class="ratio">~2.0 g/kg</div></div>
+      <div class="macro-big"><span class="tag">Fat</span><div class="val">80–90g</div><div class="ratio">~22%</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Home Base Meals</h2></div>
+    <div class="meal-card">
+      <div class="m-head"><h3>Meal 1 · split ×2</h3><span class="kcals">1,400–1,646 kcal</span></div>
+      <div class="m-body">170g oats · 30g hemp · 60g flax · 30g chia · ½ papaya · 1 banana<br><span style="color:var(--accent);font-weight:600">214g C · 58g P · 62g F</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="m-head"><h3>Meals 2 + 3</h3><span class="kcals">1,047 kcal each</span></div>
+      <div class="m-body">1 cup lentils · 1 cup rice · ½ avocado · 100g camotes / carrots / broccoli / spinach<br><span style="color:var(--accent);font-weight:600">173g C · 37g P · 13g F</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="m-head"><h3>Post-workout shake</h3><span class="kcals">~200 kcal</span></div>
+      <div class="m-body">30g pea/soy isolate + banana + water<br><span style="color:var(--accent);font-weight:600">~25g C · 28g P · 1g F</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Đà Lạt Rotation</h2></div>
+    <div class="list" id="restaurants"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Supplements</h2></div>
+    <div class="pill-row">
+      <span class="pill">Caffeine</span>
+      <span class="pill">Creatine<span class="freq">5g</span></span>
+      <span class="pill">B12<span class="freq">250µg</span></span>
+      <span class="pill">Algal DHA/EPA<span class="freq">500mg</span></span>
+      <span class="pill">Vit D3 (vegan)<span class="freq">2000IU</span></span>
+      <span class="pill">Pea/Soy isolate<span class="freq">30g</span></span>
+      <span class="pill">Electrolytes (run days)</span>
+    </div>
+  </div>
+
+  <div class="note"><strong>Timing for 2-a-days</strong> — 30g protein within 30 min post-AM lift. Full meal 60–90 min later. PM session: 20–30g carb + small protein 30 min before. Big meal after.</div>
+  <div class="note"><strong>High-activity days</strong> — add 1 cup lentils + 1 cup rice or extra rice bowl.</div>
+</section>
+
+<section class="panel" id="skills">
+  <div class="section">
+    <div class="section-head"><h2>Handstand Ladder</h2><span class="badge">4–5× / week</span></div>
+    <div class="meta">Frequency beats volume. 5–10 min most days wins over one long session. Train fresh, not fatigued.</div>
+    <div id="handstand-prog"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Arm Balance Flow</h2></div>
+    <div class="meta">Your 19-asana sequence. Practice Wednesday Vinyasa and Friday PM.</div>
+    <div class="list" id="flow-19"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Arm Balance Progression</h2></div>
+    <div id="armbalance-prog"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Pike → HSPU Strength Path</h2></div>
+    <div id="hspu-prog"></div>
+  </div>
+</section>
+
+<section class="panel" id="run">
+  <div class="section">
+    <div class="section-head"><h2>8-Week Base Build</h2><span class="badge">Zone 2</span></div>
+    <div class="meta">Conversational pace (60–70% max HR). Đà Lạt altitude adds 5–10 bpm for the first 2–3 weeks; be patient.</div>
+    <div class="week-phases" id="run-phases"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Routes</h2></div>
+    <div id="routes"></div>
+  </div>
+
+  <div class="note"><strong>Altitude note</strong> — Đà Lạt ~1,500 m gives modest hypoxic stimulus. Not enough for big EPO gains (need 2,500 m+), but free tailwind when you travel to sea level.</div>
+  <div class="note"><strong>Shoes/gear</strong> — Zone 2 road loop: any cushioned trainer. Tuyên Lâm trail: trail shoes w/ lugs for pine needle + root terrain.</div>
+</section>
+
+<section class="panel" id="recovery">
+  <div class="section">
+    <div class="section-head"><h2>Weekly Anchors</h2></div>
+    <div class="list">
+      <div class="row"><div class="label"><div class="name">Thursday deep-tissue massage</div><div class="prescr">60–90 min · book recurring slot</div></div></div>
+      <div class="row"><div class="label"><div class="name">8+ hours sleep nightly</div><div class="prescr">non-negotiable on 2-a-day weeks</div></div></div>
+      <div class="row"><div class="label"><div class="name">Sunday = full rest or optional</div><div class="prescr">honor the buffer</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Daily 10-min Reset</h2></div>
+    <div class="list">
+      <div class="row"><div class="label"><div class="name">Foam roll</div><div class="prescr">5 min — quads, glutes, thoracic</div></div></div>
+      <div class="row"><div class="label"><div class="name">Hang from bar</div><div class="prescr">2 min — decompress spine</div></div></div>
+      <div class="row"><div class="label"><div class="name">Wrist prep</div><div class="prescr">2 min — before any handstand day</div></div></div>
+      <div class="row"><div class="label"><div class="name">Hip CARs + thoracic rotation</div><div class="prescr">3 min — daily</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Check-in Metrics</h2></div>
+    <div class="list">
+      <div class="row"><div class="label"><div class="name">Morning resting HR</div><div class="prescr">sustained +5 bpm = under-recovered</div></div></div>
+      <div class="row"><div class="label"><div class="name">Core lift bar speed</div><div class="prescr">slower at same load = deload soon</div></div></div>
+      <div class="row"><div class="label"><div class="name">Handstand hold time</div><div class="prescr">declining = CNS fatigue, not skill loss</div></div></div>
+      <div class="row"><div class="label"><div class="name">Sleep quality</div><div class="prescr">&lt; 7 hrs 2 nights → skip PM session</div></div></div>
+    </div>
+  </div>
+
+  <div class="note"><strong>Deload</strong> — every 6–8 weeks take a deload week: cut volume ~50%, keep intensity, extra massage, more yin. You'll come back stronger.</div>
+</section>
+
+</main>
+
+<button class="reset" onclick="resetChecks()" style="max-width:400px;margin:0 auto 20px;">Reset all checkmarks</button>
+
+<footer>Built from your own notes · frequency &gt; volume · trust the process</footer>
+
+<script>
+const schedule = {
+  0: { name: 'Sunday', kind: 'optional', am: { type: 'optional', title: 'Optional: Functional Circuit', meta: '20–30 min · Muay Thai + KB', badge: 'OPTIONAL', badgeClass: 'rest', exercises: [
+    ['Shadow boxing', '3 × 3 min'],
+    ['Banded rotational punches', '3 × 20'],
+    ['Overhead squat', '3 × 10'],
+    ['Sprawl-burpee', '3 × 10'],
+    ['KB swing', '5 × 10'],
+    ['Turkish Get-Up', '3 / side'],
+    ['Farmer carry', '2 × 30 s'],
+  ]}, pm: null },
+  1: { name: 'Monday', kind: 'push', am: { type: 'push', title: 'Upper Push', meta: 'Heavy · 45–60 min', badge: 'PUSH', badgeClass: 'push', exercises: [
+    ['Dynamic warm-up + wrist prep', '5 min'],
+    ['Bench Press', '4 × 6'],
+    ['Incline DB Press', '3 × 8–10'],
+    ['Strict Overhead Press', '3 × 6–8'],
+    ['Dips (weighted if >10)', '3 × AMRAP'],
+    ['Lateral Raise', '3 × 12–15'],
+    ['Cable Triceps', '3 × 12'],
+    ['Turkish Get-Up (finisher)', '2 × 3 / side'],
+  ]}, pm: { type: 'skill', title: 'Handstand Skill + Core', meta: '30–40 min · CNS must be fresh', badge: 'SKILL', badgeClass: '', exercises: [
+    ['Wrist + shoulder prep', '5 min'],
+    ['Wall handstand hold', '5 × 30–60 s'],
+    ['Press to handstand (pike/L-sit)', '5 × 2–5'],
+    ['Freestanding handstand attempts', '5–10 min'],
+    ['Hollow body hold', '3 × 30 s'],
+    ['L-sit progression', '3 × max'],
+    ['Dragon flag (or negative)', '3 × 5'],
+  ]} },
+  2: { name: 'Tuesday', kind: 'pull', am: { type: 'pull', title: 'Upper Pull', meta: 'Heavy · 45–60 min', badge: 'PULL', badgeClass: 'pull', exercises: [
+    ['Warm-up + band pull-aparts', '5 min'],
+    ['Pull-ups (weighted when >10)', '4 × AMRAP'],
+    ['Pendlay Row', '4 × 6–8'],
+    ['Chest-Supported DB Row', '3 × 10'],
+    ['Face Pull', '3 × 15'],
+    ['Hammer Curl', '3 × 10'],
+    ['Hanging Leg Raise', '3 × 10–12'],
+    ['Farmer Carry', '2 × 30 s'],
+  ]}, pm: { type: 'run', title: 'Zone 2 Run · Xuân Hương', meta: '30–40 min easy · lake loop (5 km)', badge: 'ZONE 2', badgeClass: 'run', exercises: [
+    ['Easy pace warm-up', '5 min walk/jog'],
+    ['Zone 2 run (60–70% max HR)', '25–30 min'],
+    ['Cool-down walk', '5 min'],
+    ['Post-run mobility', '5 min'],
+  ]} },
+  3: { name: 'Wednesday', kind: 'lower', am: { type: 'lower', title: 'Lower Functional', meta: 'Heavy · 60 min · only leg day', badge: 'LOWER', badgeClass: 'lower', exercises: [
+    ['Dynamic warm-up (hips, ankles)', '8 min'],
+    ['Trap Bar Deadlift', '4 × 5 (build heavy)'],
+    ['Front Squat', '3 × 6–8'],
+    ['Bulgarian Split Squat', '3 × 8 / side'],
+    ['Nordic Curl (or RDL)', '3 × 6–8'],
+    ['Standing Calf Raise', '3 × 12–15'],
+    ['Pallof Press', '3 × 10 / side'],
+  ]}, pm: { type: 'skill', title: 'Vinyasa + Arm Balances', meta: '60–75 min · 19-asana flow', badge: 'YOGA', badgeClass: '', exercises: [
+    ['Sun Salutation A+B', '10 min'],
+    ['Warrior / standing flow', '10 min'],
+    ['19-asana arm-balance flow', '30 min'],
+    ['Pincha + scorpion work', '10 min'],
+    ['Savasana', '5 min'],
+  ]} },
+  4: { name: 'Thursday', kind: 'recovery', am: { type: 'recovery', title: 'Mobility Day', meta: '30–45 min · no lifting', badge: 'RECOVERY', badgeClass: 'rest', exercises: [
+    ['Foam roll (full body)', '10 min'],
+    ['Yin yoga or walk', '20–30 min'],
+    ['Hip CARs + thoracic rotations', '5 min'],
+    ['Long hang', '2–3 × 1 min'],
+  ]}, pm: { type: 'recovery', title: 'Massage / Bodywork', meta: 'Weekly anchor · book it', badge: 'MASSAGE', badgeClass: 'rest', exercises: [
+    ['Deep tissue massage', '60–90 min'],
+    ['Hot bath + Epsom salt (optional)', '20 min'],
+  ]} },
+  5: { name: 'Friday', kind: 'push', am: { type: 'push', title: 'Upper Volume', meta: 'Physique · higher reps · 60 min', badge: 'VOLUME', badgeClass: 'push', exercises: [
+    ['Warm-up', '5 min'],
+    ['Incline Bench Press', '4 × 8–10'],
+    ['Weighted Chin-ups', '4 × 8'],
+    ['DB Shoulder Press', '3 × 10'],
+    ['Cable Row', '3 × 10–12'],
+    ['Incline DB Curl', '3 × 10'],
+    ['Skull Crusher', '3 × 10'],
+    ['Lateral Raise (burnout)', '3 × 15–20'],
+    ['Rear Delt Fly', '3 × 12'],
+  ]}, pm: { type: 'skill', title: 'Arm Balance Flow + Core', meta: '30–40 min', badge: 'SKILL', badgeClass: '', exercises: [
+    ['Wrist prep', '5 min'],
+    ['Bakasana (crow) hold', '5 × 15–30 s'],
+    ['Side crow (both sides)', '4 × 10–20 s'],
+    ['Flying crow transitions', '5 × 3'],
+    ['Eka pada side crow attempts', '5 min'],
+    ['Pincha mayurasana', '4 × 30 s wall'],
+    ['Core circuit (hollow/L-sit/plank)', '10 min'],
+  ]} },
+  6: { name: 'Saturday', kind: 'run', am: { type: 'run', title: 'Long Trail · Tuyên Lâm', meta: '50–75 min · pine forest · +1,100 ft', badge: 'LONG RUN', badgeClass: 'run', exercises: [
+    ['Warm-up walk', '5 min'],
+    ['Zone 2 trail run', '50–75 min'],
+    ['Wk 5+: add 5 min tempo block', '5 min Z3'],
+    ['Cool-down + stretch', '10 min'],
+  ]}, pm: null },
+};
+
+const library = [
+  { cat: 'Warm-up · RAMP', items: [
+    ['Foam roll', 'full body'],
+    ['Heel / toe walk', ''],
+    ['Heel-to-toe raise', ''],
+    ['Duck walk', ''],
+    ['Arm swings', ''],
+    ['Leg swings', ''],
+    ['Inchworm', ''],
+    ['Lunge + overhead stretch', ''],
+    ['Lunge + instep touch', ''],
+    ['Walking over and under', ''],
+    ['Inverted hamstring stretch', ''],
+    ['Straight-leg march', ''],
+    ['Spiderman crawl', ''],
+    ['Scorpions', ''],
+    ['Page turns', ''],
+    ['Elbow to toe', ''],
+    ['Fire hydrant circles', ''],
+    ['Torso twist + reach', ''],
+    ['Quad stretch (standing)', ''],
+    ['Knee to chest', ''],
+    ['Butt kick', ''],
+    ['High knees', ''],
+    ['Plank hold', '30–60 s'],
+    ['Wrist prep (for skill days)', '2–3 min'],
+  ]},
+  { cat: 'Upper Push', items: [
+    ['Bench Press', '4 × 6'],
+    ['Incline Bench Press', '4 × 8–10'],
+    ['Incline DB Press', '3 × 8–10'],
+    ['DB Fly', '3 × 10'],
+    ['Pec Deck / Cable Fly', '3 × 12'],
+    ['Strict Overhead Press', '3 × 6–8'],
+    ['DB Shoulder Press', '3 × 10'],
+    ['Push Press', '4 × 4–6'],
+    ['Push Jerk', '4 × 4'],
+    ['Dips (weighted when >10)', '3 × AMRAP'],
+    ['Close-Grip Bench', '3 × 8'],
+    ['Lateral Raise', '3 × 12–15'],
+    ['Lateral Raise (burnout)', '3 × 15–20'],
+    ['Front Raise', '3 × 10'],
+    ['Upright Row', '3 × 10'],
+    ['Skull Crusher', '3 × 10'],
+    ['Cable Tricep', '3 × 12'],
+    ['Rope Pushdown', '3 × 12'],
+  ]},
+  { cat: 'Upper Pull', items: [
+    ['Pull-ups (wide)', '4 × AMRAP'],
+    ['Pull-ups (close-grip / chin)', '3 × 8'],
+    ['Weighted Pull-up', '4 × 8'],
+    ['Weighted Chin-up', '4 × 8'],
+    ['Lat Pulldown', '3 × 10'],
+    ['Bent-Over Row (BB)', '4 × 6'],
+    ['Pendlay Row', '4 × 6–8'],
+    ['Chest-Supported DB Row', '3 × 10'],
+    ['Cable Row', '3 × 10–12'],
+    ['T-Bar Row', '3 × 8'],
+    ['Face Pull', '3 × 15'],
+    ['Rear Delt Fly', '3 × 12'],
+    ['Pullover', '3 × 10'],
+    ['BB Curl', '3 × 8'],
+    ['DB Curl', '4 × 8'],
+    ['Incline DB Curl', '3 × 10'],
+    ['Hammer Curl', '3 × 10'],
+    ['Preacher Curl', '3 × 10'],
+  ]},
+  { cat: 'Olympic & Power', items: [
+    ['Hang Clean', '3 × 5'],
+    ['Power Clean', '4 × 3'],
+    ['Hang Snatch', '4 × 4'],
+    ['Power Snatch', '4 × 3'],
+    ['Push Jerk', '4 × 4'],
+    ['Split Jerk', '4 × 3'],
+    ['Jump Shrug', '5 × 5'],
+    ['Clean Pull', '4 × 4'],
+  ]},
+  { cat: 'Lower · Functional', items: [
+    ['Trap Bar Deadlift', '4 × 5'],
+    ['Conventional Deadlift', '4 × 5'],
+    ['Romanian Deadlift (RDL)', '3 × 8'],
+    ['Single-Leg Deadlift', '3 × 10 / side'],
+    ['Front Squat', '3 × 6–8'],
+    ['Goblet Squat', '3 × 10'],
+    ['Overhead Squat', '3 × 8'],
+    ['Back Squat (option)', '4 × 5'],
+    ['Bulgarian Split Squat', '3 × 8 / side'],
+    ['Walking Lunge', '3 × 10 / side'],
+    ['Step-Up', '3 × 10 / side'],
+    ['Pistol Squat progression', '3 × 5 / side'],
+    ['Zercher Squat', '3 × 6'],
+  ]},
+  { cat: 'Lower · Accessory', items: [
+    ['Leg Press', '4 × 10'],
+    ['Leg Extension', '4 × 10'],
+    ['Leg Curl', '4 × 10'],
+    ['Nordic Curl', '3 × 6–8'],
+    ['Glute-Ham Raise', '3 × 8'],
+    ['Hip Thrust', '3 × 10'],
+    ['Glute Bridge', '3 × 12'],
+    ['Standing Calf Raise', '3 × 12–15'],
+    ['Seated Calf Raise', '3 × 15'],
+    ['Hip Abduction / Adduction', '3 × 15'],
+  ]},
+  { cat: 'Core · Static', items: [
+    ['Plank (forearm)', '3 × 60 s'],
+    ['Side Plank', '3 × 45 s / side'],
+    ['Hollow Body Hold', '3 × 30 s'],
+    ['L-sit', '3 × max'],
+    ['Wall Sit', '3 × 60 s'],
+  ]},
+  { cat: 'Core · Dynamic', items: [
+    ['Hanging Leg Raise', '3 × 10–12'],
+    ['Hanging Windshield Wiper', '3 × 6 / side'],
+    ['Dragon Flag', '3 × 5'],
+    ['Russian Twist', '3 × 20'],
+    ['Sit-up (weight overhead)', '3 × 12'],
+    ['Crunches (bicycle)', '3 × 20'],
+    ['Crunches (scissor)', '3 × 20'],
+    ['Crunches (side)', '3 × 15 / side'],
+    ['Crunches (vertical)', '3 × 15'],
+    ['Leg Raise (alt / double / flutter)', '3 × 20'],
+    ['Leg Raise (pendulum)', '3 × 10 / side'],
+    ['Mountain Climber', '3 × 30'],
+    ['Knee to Elbow', '3 × 15 / side'],
+    ['Pallof Press', '3 × 10 / side'],
+    ['Twists (broom / band)', '3 × 20'],
+    ['Farmer Carry', '2 × 30 s'],
+  ]},
+  { cat: 'Plyometrics', items: [
+    ['Box Jump', '4 × 6'],
+    ['Depth Jump (vertical)', '5 × 4'],
+    ['Depth Jump (horizontal)', '5 × 4'],
+    ['Long Jump', '5 × 4'],
+    ['Jump & Reach', '4 × 5'],
+    ['Split Squat Jump', '3 × 8 / side'],
+    ['Two-Foot Ankle Hop', '3 × 20'],
+    ['Power Jump (vert / forward)', '4 × 6'],
+    ['Single-Leg Lateral Box Jump', '3 × 6 / side'],
+    ['Plyo Push-up', '3 × 6'],
+    ['Calf Hop', '3 × 20'],
+    ['Squat Jump', '4 × 6'],
+    ['Burpees', '3 × 10'],
+  ]},
+  { cat: 'Agility & Footwork', items: [
+    ['Lateral Shuffle', '4 × 20 m'],
+    ['In & Out Hop', '4 × 10'],
+    ['Thunderbolt', '4 × 10'],
+    ['Icky Shuffle', '4 × 10'],
+    ['High Knees', '3 × 30 s'],
+    ['Diagonal Hops', '3 × 10'],
+    ['Side Jumps', '3 × 20'],
+    ['Canoca drill', '3 × 10'],
+    ['Two-footed forward / backward jump', '3 × 10'],
+    ['Single runs', '4 × sprint'],
+  ]},
+  { cat: 'Stairs', items: [
+    ['Single bound', '5 × flight'],
+    ['Double hop', '5 × flight'],
+    ['Single step', '3 × flight'],
+    ['Lateral step', '3 × flight'],
+    ['Calf double', '3 × flight'],
+    ['Calf single', '3 × flight'],
+    ['Full sprint', '3 × flight'],
+    ['Bear crawl up / down / reverse', '3 × flight'],
+    ['Bear crawl + push-up', '2 × flight'],
+  ]},
+  { cat: 'HIIT Finishers', items: [
+    ['Burpees', '30 s on / 30 s off × 8'],
+    ['Alt Jump Knees', '30 × 8'],
+    ['Squat Jump', '20 × 6'],
+    ['Jump Tucks', '15 × 6'],
+    ['Burpee Sprawl', '30 s × 6'],
+    ['Plyo Push-up', '10 × 6'],
+    ['Continuous Knees', '30 s × 6'],
+  ]},
+  { cat: 'Muay Thai / Functional', items: [
+    ['Shadow Box', '3 × 3 min rounds'],
+    ['Banded Punch (rotational)', '3 × 20'],
+    ['Hip Abduction / Adduction', '3 × 15'],
+    ['Overhead Squat', '3 × 10'],
+    ['Lunging Knees', '3 × 10 / side'],
+    ['Glute Bridge', '3 × 15'],
+    ['Sprawl-Burpee', '3 × 10'],
+    ['Isometric plank / push-up / wall sit', '3 × 60 s'],
+    ['KB Swing', '5 × 10'],
+    ['Turkish Get-Up', '3 / side'],
+  ]},
+  { cat: 'Handstand · Inversion', items: [
+    ['Wall handstand hold', '5 × 30–60 s'],
+    ['Freestanding handstand', '5 × attempt'],
+    ['Press to handstand (pike)', '5 × 2–5'],
+    ['Press to handstand (L-sit)', '5 × 2'],
+    ['Pincha Mayurasana (forearm)', '4 × 30 s'],
+    ['Scorpion handstand', '3 × 15 s'],
+    ['Bakasana to handstand', '5 × attempt'],
+    ['Headstand', '3 × 60 s'],
+    ['Chin stand', '3 × 20 s'],
+    ['Hop to handstand', '10 attempts'],
+    ['Hop to tuck handstand', '10 attempts'],
+  ]},
+  { cat: 'Arm Balances', items: [
+    ['Bakasana (crow)', '5 × 15–30 s'],
+    ['Side crow (parsva bakasana)', '4 × 10–20 s'],
+    ['Flying crow', '5 × 3'],
+    ['Eka pada side crow', '5 attempts'],
+    ['Mayurasana (peacock)', '4 × 10 s'],
+    ['Single-arm balance (L & R)', '5 attempts'],
+    ['Firefly (tittibhasana)', '3 × 15 s'],
+    ['Two feet head over shoulder', '5 attempts'],
+  ]},
+  { cat: 'Yoga · Asanas & Transitions', items: [
+    ['Sun Salutation A', '5 rounds'],
+    ['Sun Salutation B', '3 rounds'],
+    ['Down Dog', 'hold 30 s'],
+    ['Chaturanga (very slow)', '5 × 5 s'],
+    ['Child\'s pose', 'as needed'],
+    ['Prasarita (wide-leg fold)', 'hold 60 s'],
+    ['Hanumanasana (splits)', 'L + R'],
+    ['Padmasana (lotus)', 'hold'],
+    ['Urdhva Dhanurasana (wheel)', '3 × 30 s'],
+    ['Eagle (garudasana)', '30 s / side'],
+    ['Warrior series', 'flow'],
+    ['Ashtanga transitions', 'practice'],
+    ['Grab hands behind back', 'hold'],
+    ['All side body stretches', 'flow'],
+    ['Jump to handstand', 'drill'],
+    ['Open-close (transition)', 'drill'],
+  ]},
+  { cat: 'Mobility · Daily', items: [
+    ['Hip CARs', '5 / side'],
+    ['Thoracic rotation', '10 / side'],
+    ['90/90 hip stretch', '60 s / side'],
+    ['Cossack squat', '10 / side'],
+    ['Couch stretch', '60 s / side'],
+    ['Frog stretch', '60 s'],
+    ['Pigeon', '60 s / side'],
+    ['Wrist prep (pre-skill)', '2–3 min'],
+    ['Dead hang', '2 × 60 s'],
+  ]},
+];
+
+const restaurants = [
+  { name: 'Vegan Heaven', freq: '3–4× / wk', note: '43 D. Nguyễn Văn Cừ · rice + mushroom + tofu staple · 4.9★' },
+  { name: 'Au Lac', freq: '1× / wk', note: 'Traditional Vietnamese vegan · diverse plates' },
+  { name: 'Suong Mai (buffet)', freq: '1× / wk', note: '~25K VND · protein variety · load up on tofu/tempeh' },
+  { name: 'Tu Hanh', freq: '1× / wk', note: 'Delicate tofu · low-fat variety' },
+  { name: 'Rau DAWA / LÉGUDA', freq: 'treat', note: 'View + buffet format · for special meals' },
+];
+
+const handstandProg = [
+  { level: 'Level 1', name: 'Wall handstand — chest to wall', cri: 'Hold 60 s × 3. Shoulders stacked over hands, belly button to spine.' },
+  { level: 'Level 2', name: 'Wall handstand — back to wall', cri: 'Hold 60 s. Start kicking away from wall for balance taps.' },
+  { level: 'Level 3', name: 'Freestanding holds', cri: 'Accumulate 30 s freestanding across attempts. Fingers press floor, mini-corrections.' },
+  { level: 'Level 4', name: 'Press to handstand (pike)', cri: 'Straddle press from pike, both legs rising together. 3 clean reps.' },
+  { level: 'Level 5', name: 'Press to handstand (L-sit)', cri: 'From L-sit, compress → pike → straddle up. 2 clean reps. Your current goal.' },
+  { level: 'Level 6', name: 'One-arm wall progression', cri: 'Two-finger lift → full one-arm against wall. Patience — 6–12 months past Level 5.' },
+];
+
+const armbalanceProg = [
+  { level: 'Base', name: 'Bakasana (crow)', cri: '30 s hold, both knees on triceps, feet off floor. Foundation for all arm balances.' },
+  { level: 'Step 1', name: 'Side crow (parsva bakasana)', cri: 'Both legs stacked on one tricep, 15 s each side. Thoracic rotation holds.' },
+  { level: 'Step 2', name: 'Flying crow (eka pada galavasana)', cri: 'One leg hooks over tricep, back leg extends. Hold 5 s, 5 each side.' },
+  { level: 'Step 3', name: 'Eka pada side crow', cri: 'Side crow with one leg extended. Strong obliques + shoulder stability.' },
+  { level: 'Step 4', name: 'Mayurasana (peacock)', cri: 'Hand-stance on palms with elbows in solar plexus, legs off floor. Novelty strength.' },
+  { level: 'Step 5', name: 'Flying crow → handstand', cri: 'Float from flying crow into chaturanga arms → press to handstand.' },
+];
+
+const hspuProg = [
+  { level: 'Gate 1', name: 'Tricep push-up', cri: 'Clean 10–12 reps. Elbows tight. Before any pike work.' },
+  { level: 'Gate 2', name: 'Pike hold (feet on box)', cri: 'Hold 30–45 s with hips vertical over shoulders.' },
+  { level: 'Gate 3', name: 'Pike push-up (box)', cri: '3–5 sets × 5 clean reps. Head gently touches floor.' },
+  { level: 'Gate 4', name: 'Deficit pike push-up', cri: 'Hands elevated on parallettes or blocks. 3 × 5.' },
+  { level: 'Gate 5', name: 'Wall HSPU (head to floor)', cri: 'Chest-to-wall, lower head, press up. 3 × 3.' },
+  { level: 'Gate 6', name: 'Freestanding HSPU', cri: 'From freestanding handstand, one clean rep. Months past Gate 5.' },
+];
+
+const flow19 = [
+  ['1', 'Hop to handstand'],
+  ['2', 'Open / close'],
+  ['3', 'Chaturanga'],
+  ['4', 'Down dog'],
+  ['5', 'Jump to handstand'],
+  ['6', 'Lower to leg out → switch flying'],
+  ['7', 'Chin stand'],
+  ['8', 'Peacock (mayurasana)'],
+  ['9', 'Single arm (L)'],
+  ['10', 'Single arm (R)'],
+  ['11', 'Bakasana'],
+  ['12', 'Flying crow'],
+  ['13', 'Switch'],
+  ['14', 'Press to handstand'],
+  ['15', 'Side crow (eka pada)'],
+  ['16', 'Two feet head over shoulder'],
+  ['17', 'Press to handstand'],
+  ['18', 'Chaturanga (very slow)'],
+  ['19', "Child's pose"],
+];
+
+const runPhases = [
+  { wk: 'Wk 1–2', focus: 'Foundation', detail: '2 × 25 min Z2 (Tue + Sat). Walk breaks OK.' },
+  { wk: 'Wk 3–4', focus: 'Time on feet', detail: 'Tue 30 min · Sat 40 min Z2 trail.' },
+  { wk: 'Wk 5–6', focus: 'Add tempo', detail: 'Tue 35 min Z2 · Sat 50 min + 5 min Z3.' },
+  { wk: 'Wk 7–8', focus: 'Build long', detail: 'Tue 40 min Z2 · Sat 60–75 min + 2 × 5 min Z3.' },
+];
+
+const routes = [
+  { name: 'Xuân Hương Lake Circuit', dist: '5 km', detail: 'Paved loop, flat, lit at night. Default Tuesday Zone 2 route. 4.4★ popular.' },
+  { name: 'Tuyên Lâm West Trail', dist: '10.3 km', detail: '+1,108 ft · pine forest · rolling singletrack · Saturday long run default.' },
+  { name: 'Tuyên Lâm full loop', dist: '~7 km easier', detail: 'Lake perimeter variant · mixed terrain · good for week-5+ progression.' },
+  { name: 'La An Ultra Trail', dist: '36 km / +5,045 ft', detail: 'Future goal · big mountain ultra route · don\'t attempt before 12 weeks base.' },
+];
+
+const STORAGE_KEY = 'protocol-v1-checks';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch(e) { state = {}; }
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function renderSessionCard(session, sessionKey) {
+  if (!session) return '';
+  const rows = session.exercises.map(([name, prescr], i) => {
+    const key = `${sessionKey}:${i}`;
+    const done = state[key] ? 'done' : '';
+    return `<div class="row ${done}" data-key="${key}">
+      <div class="check"></div>
+      <div class="label"><div class="name">${name}</div>${prescr ? `<div class="prescr">${prescr}</div>` : ''}</div>
+    </div>`;
+  }).join('');
+  return `<div class="session-card">
+    <div class="s-head"><h3>${session.title}</h3><span class="badge ${session.badgeClass||''}">${session.badge}</span></div>
+    <div class="s-meta">${session.meta}</div>
+    <div class="list">${rows}</div>
+  </div>`;
+}
+
+function renderToday() {
+  const dow = new Date().getDay();
+  const day = schedule[dow];
+  const parts = [`<div class="section">
+    <div class="section-head"><h2>${day.name}</h2><span class="badge">${dow === new Date().getDay() ? 'TODAY' : ''}</span></div>
+    <div class="meta">AM session first. ${day.pm ? 'PM session 6–8 hours later.' : 'No PM session today.'}</div>
+  </div>`];
+  if (day.am) parts.push(renderSessionCard(day.am, `d${dow}-am`));
+  if (day.pm) parts.push(renderSessionCard(day.pm, `d${dow}-pm`));
+  if (!day.pm && day.kind !== 'run') parts.push('<div class="note"><strong>PM today</strong> — rest fully or light walk.</div>');
+  document.getElementById('today').innerHTML = parts.join('');
+  attachRowHandlers();
+}
+
+function renderWeek() {
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const todayIdx = new Date().getDay();
+  const order = [1, 2, 3, 4, 5, 6, 0];
+  const rows = order.map(i => {
+    const d = schedule[i];
+    const isToday = i === todayIdx;
+    const am = d.am ? `<div class="slot"><div class="slot-label">AM · ${d.am.badge}</div>${d.am.title}</div>` : '<div class="slot"><div class="slot-label">AM</div>—</div>';
+    const pm = d.pm ? `<div class="slot"><div class="slot-label">PM · ${d.pm.badge}</div>${d.pm.title}</div>` : '<div class="slot"><div class="slot-label">PM</div>—</div>';
+    return `<div class="week-row ${isToday?'today':''}"><div class="day">${dayNames[i]}</div>${am}${pm}</div>`;
+  }).join('');
+  document.getElementById('week-grid').innerHTML = rows;
+}
+
+function renderLibrary() {
+  let total = 0;
+  const html = library.map((cat, idx) => {
+    total += cat.items.length;
+    const items = cat.items.map(([n, p]) => `<div class="cat-item">${n}${p ? ` <span class="p">· ${p}</span>` : ''}</div>`).join('');
+    return `<div class="cat" data-idx="${idx}">
+      <div class="cat-head"><h3>${cat.cat}</h3><div><span class="count">${cat.items.length}</span><span class="caret">›</span></div></div>
+      <div class="cat-body">${items}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('library-list').innerHTML = html;
+  document.getElementById('lib-count').textContent = `${total} movements`;
+  document.querySelectorAll('.cat-head').forEach(head => {
+    head.addEventListener('click', () => head.parentElement.classList.toggle('open'));
+  });
+}
+
+function renderFuel() {
+  const html = restaurants.map(r => `<div class="restaurant-row">
+    <div><div class="name">${r.name}</div><div class="note" style="padding:0;background:none;border:none">${r.note}</div></div>
+    <div class="freq">${r.freq}</div>
+  </div>`).join('');
+  document.getElementById('restaurants').innerHTML = html;
+}
+
+function renderSkills() {
+  const prog = (arr, id) => {
+    document.getElementById(id).innerHTML = arr.map(p => `<div class="progression">
+      <div class="level">${p.level}</div>
+      <h4>${p.name}</h4>
+      <div class="cri">${p.cri}</div>
+    </div>`).join('');
+  };
+  prog(handstandProg, 'handstand-prog');
+  prog(armbalanceProg, 'armbalance-prog');
+  prog(hspuProg, 'hspu-prog');
+  document.getElementById('flow-19').innerHTML = flow19.map(([n, label], i) => {
+    const key = `flow:${i}`;
+    const done = state[key] ? 'done' : '';
+    return `<div class="row ${done}" data-key="${key}">
+      <div class="check"></div>
+      <div class="label"><div class="name"><span style="color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums">${n}.</span> ${label}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderRun() {
+  document.getElementById('run-phases').innerHTML = runPhases.map(p => `<div class="phase-card">
+    <div class="p-wk">${p.wk}</div>
+    <div class="p-focus">${p.focus}</div>
+    <div class="p-detail">${p.detail}</div>
+  </div>`).join('');
+  document.getElementById('routes').innerHTML = routes.map(r => `<div class="meal-card">
+    <div class="m-head"><h3>${r.name}</h3><span class="kcals">${r.dist}</span></div>
+    <div class="m-body">${r.detail}</div>
+  </div>`).join('');
+}
+
+function attachRowHandlers() {
+  document.querySelectorAll('.row[data-key]').forEach(row => {
+    if (row._bound) return;
+    row._bound = true;
+    row.addEventListener('click', () => {
+      const key = row.dataset.key;
+      state[key] = !state[key];
+      if (!state[key]) delete state[key];
+      row.classList.toggle('done');
+      saveState();
+    });
+  });
+}
+
+function resetChecks() {
+  if (!confirm('Clear ALL checkmarks across all tabs?')) return;
+  state = {};
+  saveState();
+  document.querySelectorAll('.row.done').forEach(r => r.classList.remove('done'));
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.panel).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+});
+
+const today = new Date();
+const dow = today.toLocaleDateString('en-US', { weekday: 'short' });
+const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+document.getElementById('today-label').textContent = `${dow} · ${dateStr}`;
+
+renderToday();
+renderWeek();
+renderLibrary();
+renderFuel();
+renderSkills();
+renderRun();
+attachRowHandlers();
+</script>
+</body>
+</html>
