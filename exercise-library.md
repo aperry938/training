@@ -124,7 +124,7 @@ Lateral Shuffle · In & Out Hop · Thunderbolt · Icky Shuffle · High Knees · 
 
 Single bound · Double hop · Single step · Lateral step · Calf double · Calf single · Full sprint · Bear crawl (up / down / reverse, w/ push-up bounce).
 
-**Use case:** alternative to traditional plyos when Đà Lạt hills are available — which they are everywhere.
+**Use case:** alternative to traditional plyos when you've got hills or stairs — Doi Suthep's slopes, temple staircases, and the 700-Year Stadium steps all work.
 
 ---
 

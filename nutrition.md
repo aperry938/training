@@ -1,4 +1,4 @@
-# Nutrition — Vegan, Concurrent Training, Đà Lạt
+# Nutrition — Vegan, Concurrent Training, Chiang Mai
 
 Built on your existing macro plan (`vegan-nutrition-&-exercise.docx`) with adjustments for adding running and emphasizing lean-aesthetic.
 
@@ -56,24 +56,24 @@ Macros: 214 g C / 58 g P / 62 g F
 Macros each: 173 g C / 37 g P / 13 g F
 
 ### High-activity days
-Add 1 cup lentils + 1 cup rice (or substitute a full extra rice bowl at Vegan Heaven).
+Add 1 cup lentils + 1 cup rice (or substitute a full extra rice bowl at Anchan or Pun Pun).
 
 ---
 
-## Đà Lạt restaurant rotation
+## Chiang Mai restaurant rotation
 
-Break up the monotony of home cooking without breaking the bank.
+Break up the monotony of home cooking without breaking the bank. Chiang Mai is one of Asia's best vegan cities — and "เจ" (jay) yellow-flag stalls are everywhere for cheap, animal-free protein.
 
 | Frequency | Spot | Why / dish | Cost estimate |
 |-----------|------|------------|---------------|
-| **3–4× / week** | **Vegan Heaven** (43 D. Nguyễn Văn Cừ, Phường 1) | Your staple — rice + mushroom + tofu + side tofu · reliable macros · 4.9★ · 899 reviews | ~50–70K VND |
-| **1× / week** | **Au Lac** | Traditional Vietnamese vegan — braised tofu, noodles, spring rolls | ~60–80K VND |
-| **1× / week** | **Suong Mai** buffet | All-you-can-eat — load up on tofu/tempeh/veg for weekly variety | ~25K VND (!) |
-| **1× / week** | **Tu Hanh** | Delicate tofu, mushroom, banana-bean soup, northern-style tofu — lower fat profile | ~60K VND |
-| **Occasional** | **Rau DAWA** (Tam Trinh Coffee) | Luxurious setting, 50+ vegetarian dishes, view of Elephant Waterfall | premium |
-| **Occasional** | **LÉGUDA** | First vegetable buffet in Đà Lạt, 20+ varieties, organic | mid-premium |
+| **3–4× / week** | **Anchan Vegetarian** (on Nimman) | Your staple — Thai curries, stir-fries, tofu/tempeh · big, clearly-labelled vegan menu · near home | ~125฿/dish (max ~160฿) |
+| **1–2× / week** | **Pun Pun** (Wat Suan Dok, Suthep Rd) | Organic Thai — curries, stir-fried veg, fresh spring rolls · cheap, close to Nimman | ~80–150฿ |
+| **1× / week** | **Goodsouls Kitchen** (NE Old City) | Fully vegan, big international menu — tofu scrambles, falafel, protein bowls · 8am–10pm | ~120–200฿ |
+| **1× / week** | **Reform Kafé** (NW Old City) | Garden café — Thai + Western vegan, burgers, falafel plate | ~150–220฿ |
+| **Fill-in** | **Jay (เจ) stalls / veg buffet** | Yellow-flag vegetarian stalls citywide — load up on tofu/tempeh/veg | ~40–60฿ |
+| **Treat** | **Free Bird Café** (Old City) | Vegan + supports Burmese refugees · feel-good meal | mid |
 
-**Weekly approximate food cost:** 3 × Vegan Heaven (180K) + Au Lac (70K) + Suong Mai (25K) + Tu Hanh (60K) + home groceries (300–400K) = ~600–700K VND/week (~$25 USD).
+**Weekly approximate food cost:** 3 × Anchan (~400฿) + Pun Pun (~120฿) + Goodsouls (~180฿) + Reform (~200฿) + jay stalls + home groceries (~600–900฿) = roughly **1,500–2,000฿/week (~$45 USD)** — a touch more than Đà Lạt, still cheap.
 
 ---
 
@@ -85,9 +85,9 @@ Break up the monotony of home cooking without breaking the bank.
 | **Creatine monohydrate** | 5 g | Daily (any time) | Only proven hypertrophy + strength ergogenic, ~10% boost |
 | **B12 (methyl or cyano)** | 250 µg daily or 2,000 µg weekly | With meal | **Non-negotiable** for vegans — no reliable plant source |
 | **Algal DHA + EPA** | 500 mg combined | Daily w/ meal | Offsets omega-6 dominance of plant diet; flax converts poorly |
-| **Vitamin D3 (vegan lichen)** | 1,000–2,000 IU | Daily | Đà Lạt sun is real but deficiency is common in anyone who works indoors |
+| **Vitamin D3 (vegan lichen)** | 1,000–2,000 IU | Daily | Chiang Mai sun is strong, but burning-season haze (Feb–Apr) cuts UV and indoor workers run low anyway |
 | **Pea / soy isolate** | 30 g | Post-workout | Shake delivery to hit protein distribution target |
-| **Electrolytes** (Na, K, Mg) | 1 serving | Run days, esp. trail | Sweating + altitude = salt loss |
+| **Electrolytes** (Na, K, Mg) | 1 serving | Run days, esp. trail | Heavy sweating in the heat & humidity = real salt loss |
 
 **Skip/optional:**
 - Multivitamin: redundant if diet is varied + above supplements taken
@@ -122,7 +122,7 @@ Shift wall-clock times to match your rhythm; the ratios hold.
 - **Run days:** +500 ml pre-run + electrolyte drink during if >45 min
 - **Signals you're under-hydrated:** dark urine, afternoon headache, low bar speed, cotton-mouth during skill work
 
-Đà Lạt water is cold mountain water and a pleasure to drink. No excuse.
+Chiang Mai tap water isn't potable — use filtered or bottled (cheap refill stations are everywhere). In the heat you'll trend toward the top of that range.
 
 ---
 
@@ -145,5 +145,5 @@ For now you're in **build mode, lean build**. Not cutting.
 - [Vegan athletes meeting protein needs — CTS Trainright](https://trainright.com/vegan-athlete-protein-intake/)
 - [Protein for Vegan Athletes — No Meat Athlete](https://www.nomeatathlete.com/protein-for-athletes/)
 - [Gatorade plant-based athlete guide](https://www.gatorade.com/resources/nutritional-plant-based-guide-for-vegetarian-vegan-athletes)
-- [HappyCow Đà Lạt vegan 2025](https://www.happycow.net/best-vegan-restaurants/da-lat-vietnam)
-- [Vegan Heaven — Đà Lạt listing](https://booked.ai/restaurants/nha-hang-thuan-chay-vegan-heaven-dalat)
+- [HappyCow — best vegan restaurants in Chiang Mai](https://www.happycow.net/best-vegan-restaurants/chiang-mai-thailand)
+- [Chiang Mai Citylife — complete vegan guide](https://chiangmaicitylife.com/citylife-articles/complete-vegan-guide-chiang-mai)

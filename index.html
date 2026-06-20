@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Protocol">
 <meta name="robots" content="noindex, nofollow">
-<title>Training Protocol · Đà Lạt</title>
+<title>Training Protocol · Chiang Mai</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B0B0C'/%3E%3Cpath d='M30 55 L45 40 L45 65 L70 40' stroke='%23B4E85C' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -387,7 +387,7 @@
   </div>
 
   <div class="section">
-    <div class="section-head"><h2>Đà Lạt Rotation</h2></div>
+    <div class="section-head"><h2>Chiang Mai Rotation</h2></div>
     <div class="list" id="restaurants"></div>
   </div>
 
@@ -435,7 +435,7 @@
 <section class="panel" id="run">
   <div class="section">
     <div class="section-head"><h2>8-Week Base Build</h2><span class="badge">Zone 2</span></div>
-    <div class="meta">Conversational pace (60–70% max HR). Đà Lạt altitude adds 5–10 bpm for the first 2–3 weeks; be patient.</div>
+    <div class="meta">Conversational pace (60–70% max HR). Chiang Mai is hot — heat + humidity add 5–10 bpm, so run at dawn and slow down to hold the zone.</div>
     <div class="week-phases" id="run-phases"></div>
   </div>
 
@@ -444,8 +444,8 @@
     <div id="routes"></div>
   </div>
 
-  <div class="note"><strong>Altitude note</strong> — Đà Lạt ~1,500 m gives modest hypoxic stimulus. Not enough for big EPO gains (need 2,500 m+), but free tailwind when you travel to sea level.</div>
-  <div class="note"><strong>Shoes/gear</strong> — Zone 2 road loop: any cushioned trainer. Tuyên Lâm trail: trail shoes w/ lugs for pine needle + root terrain.</div>
+  <div class="note"><strong>Heat &amp; air</strong> — Chiang Mai sits at ~310 m, so no altitude effect; heat is what lifts your HR. Run at dawn. <strong>Burning season (Feb–Apr):</strong> PM2.5 routinely runs 3–5× the WHO limit — check IQAir, wear an N95 if you run, or bail to the Pump 2.0 treadmill on hazardous days.</div>
+  <div class="note"><strong>Shoes/gear</strong> — Zone 2 loop (Ang Kaew / moat): any cushioned trainer. Doi Suthep Monk's Trail: trail shoes w/ lugs for dirt, roots, and temple steps.</div>
 </section>
 
 <section class="panel" id="recovery">
@@ -489,7 +489,7 @@
 
 <script>
 const schedule = {
-  0: { name: 'Sunday', kind: 'optional', am: { type: 'optional', title: 'Optional: Functional Circuit', meta: '20–30 min · Muay Thai + KB', badge: 'OPTIONAL', badgeClass: 'rest', exercises: [
+  0: { name: 'Sunday', kind: 'optional', am: { type: 'optional', title: 'Optional: Functional Circuit', meta: '20–30 min · home circuit or a Muay Thai gym', badge: 'OPTIONAL', badgeClass: 'rest', exercises: [
     ['Shadow boxing', '3 × 3 min'],
     ['Banded rotational punches', '3 × 20'],
     ['Overhead squat', '3 × 10'],
@@ -525,7 +525,7 @@ const schedule = {
     ['Hammer Curl', '3 × 10'],
     ['Hanging Leg Raise', '3 × 10–12'],
     ['Farmer Carry', '2 × 30 s'],
-  ]}, pm: { type: 'run', title: 'Zone 2 Run · Xuân Hương', meta: '30–40 min easy · lake loop (5 km)', badge: 'ZONE 2', badgeClass: 'run', exercises: [
+  ]}, pm: { type: 'run', title: 'Zone 2 Run · Ang Kaew', meta: '30–40 min easy · CMU reservoir + arboretum', badge: 'ZONE 2', badgeClass: 'run', exercises: [
     ['Easy pace warm-up', '5 min walk/jog'],
     ['Zone 2 run (60–70% max HR)', '25–30 min'],
     ['Cool-down walk', '5 min'],
@@ -574,7 +574,7 @@ const schedule = {
     ['Pincha mayurasana', '4 × 30 s wall'],
     ['Core circuit (hollow/L-sit/plank)', '10 min'],
   ]} },
-  6: { name: 'Saturday', kind: 'run', am: { type: 'run', title: 'Long Trail · Tuyên Lâm', meta: '50–75 min · pine forest · +1,100 ft', badge: 'LONG RUN', badgeClass: 'run', exercises: [
+  6: { name: 'Saturday', kind: 'run', am: { type: 'run', title: 'Long Trail · Doi Suthep', meta: "50–75 min · Monk's Trail · jungle climb", badge: 'LONG RUN', badgeClass: 'run', exercises: [
     ['Warm-up walk', '5 min'],
     ['Zone 2 trail run', '50–75 min'],
     ['Wk 5+: add 5 min tempo block', '5 min Z3'],
@@ -825,11 +825,12 @@ const library = [
 ];
 
 const restaurants = [
-  { name: 'Vegan Heaven', freq: '3–4× / wk', note: '43 D. Nguyễn Văn Cừ · rice + mushroom + tofu staple · 4.9★' },
-  { name: 'Au Lac', freq: '1× / wk', note: 'Traditional Vietnamese vegan · diverse plates' },
-  { name: 'Suong Mai (buffet)', freq: '1× / wk', note: '~25K VND · protein variety · load up on tofu/tempeh' },
-  { name: 'Tu Hanh', freq: '1× / wk', note: 'Delicate tofu · low-fat variety' },
-  { name: 'Rau DAWA / LÉGUDA', freq: 'treat', note: 'View + buffet format · for special meals' },
+  { name: 'Anchan Vegetarian', freq: '3–4× / wk', note: 'On Nimman · Thai curries + stir-fries · ~125฿ · big clearly-labelled vegan menu' },
+  { name: 'Pun Pun', freq: '1–2× / wk', note: 'Wat Suan Dok, Suthep Rd · organic Thai · cheap, near home' },
+  { name: 'Goodsouls Kitchen', freq: '1× / wk', note: 'NE Old City · fully vegan · tofu scrambles + protein bowls · 8am–10pm' },
+  { name: 'Reform Kafé', freq: '1× / wk', note: 'NW Old City garden café · Thai + Western vegan' },
+  { name: 'Jay (เจ) stalls / veg buffet', freq: 'fill-in', note: 'Yellow-flag veg stalls citywide · ~40–60฿ · load up on tofu/tempeh' },
+  { name: 'Free Bird Café', freq: 'treat', note: 'Old City · vegan + supports Burmese refugees · feel-good meal' },
 ];
 
 const handstandProg = [
@@ -889,10 +890,11 @@ const runPhases = [
 ];
 
 const routes = [
-  { name: 'Xuân Hương Lake Circuit', dist: '5 km', detail: 'Paved loop, flat, lit at night. Default Tuesday Zone 2 route. 4.4★ popular.' },
-  { name: 'Tuyên Lâm West Trail', dist: '10.3 km', detail: '+1,108 ft · pine forest · rolling singletrack · Saturday long run default.' },
-  { name: 'Tuyên Lâm full loop', dist: '~7 km easier', detail: 'Lake perimeter variant · mixed terrain · good for week-5+ progression.' },
-  { name: 'La An Ultra Trail', dist: '36 km / +5,045 ft', detail: 'Future goal · big mountain ultra route · don\'t attempt before 12 weeks base.' },
+  { name: 'Ang Kaew Reservoir (CMU)', dist: '~1 km loop', detail: 'Flat, shaded reservoir track + Huay Kaew arboretum & CMU paths. Default Tuesday Zone 2 — right by Nimman/Suthep.' },
+  { name: "Doi Suthep — Monk's Trail", dist: '7.5 km · +620 m', detail: "Pilgrim's path to Wat Pha Lat (4.3 km / +222 m), then up to the chedi at 1,073 m. Jungle singletrack + temple steps. Saturday long climb." },
+  { name: 'Huay Tung Tao + Canal Rd', dist: '3.5 km loop · 5 km path', detail: 'Flat lake perimeter + paved Canal Rd cycle path (north). Good flat-long alternative.' },
+  { name: 'Old City moat loop', dist: '~7 km', detail: 'Flat, lit, central — handy but traffic-y with uneven sidewalk. Travel / urban default.' },
+  { name: 'Thailand by UTMB · Doi Inthanon', dist: '20–100K+', detail: "Late Nov/Dec · Thailand's iconic mountain ultra (400–2,100 m). Long-term goal — don't touch before 12 weeks base." },
 ];
 
 const STORAGE_KEY = 'protocol-v1-checks';
